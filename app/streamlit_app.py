@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import sys
 import os
-sys.path.append("../src/features")
+sys.path.append("./src/features")
 
 st.title('Flight Fare Estimation App')
 st.write('Enter your trip details below:')
@@ -32,13 +32,13 @@ if st.button('Predict Fare'):
     from tensorflow.keras.models import load_model
 
     # Load the trained model
-    model = load_model("../models/Kritika/exp2_best_model.h5")
+    model = load_model("./models/Kritika/exp2_best_model.h5")
     if model:
         st.write('Trip Cost prediction model has been loaded successfully!')
 
     # Load label encoders and scaler
-    label_encoder = joblib.load('../models/Kritika/label_encoder.joblib')
-    scaler = joblib.load('../models/Kritika/standard_scaler.joblib')
+    label_encoder = joblib.load('./models/Kritika/label_encoder.joblib')
+    scaler = joblib.load('./models/Kritika/standard_scaler.joblib')
 
     # Apply label encoding on categorical columns in the new data
     for col in ['startingAirport', 'destinationAirport', 'cabin_type', 'departure_time_category']:
