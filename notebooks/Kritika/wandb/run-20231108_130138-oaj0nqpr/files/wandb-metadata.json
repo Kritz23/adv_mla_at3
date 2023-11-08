@@ -1,0 +1,36 @@
+{
+    "os": "macOS-14.0-arm64-arm-64bit",
+    "python": "3.9.13",
+    "heartbeatAt": "2023-11-08T02:01:39.194347",
+    "startedAt": "2023-11-08T02:01:38.267122",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/Kritz23/adv_mla_at3.git",
+        "commit": "f94a96a502c37b982d161dd4c63b9ecafdf075a7"
+    },
+    "email": "kritz2399@gmail.com",
+    "root": "/Users/kritika/Desktop/MDSI/AMLA/adv_mla_at3",
+    "host": "Kritikas-MacBook-Air.local",
+    "username": "kritika",
+    "executable": "/Users/kritika/Library/Caches/pypoetry/virtualenvs/adv-mla-at3-NzhSlUn1-py3.9/bin/python3",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "disk": {
+        "/": {
+            "total": 228.27386474609375,
+            "used": 9.14370346069336
+        }
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 8.0
+    }
+}
