@@ -1,7 +1,6 @@
 import sys
 import pandas as pd
 import streamlit as st
-from catboost import CatBoostRegressor
 import joblib
 sys.path.append("../src/features")
 from build_features import get_date_features
