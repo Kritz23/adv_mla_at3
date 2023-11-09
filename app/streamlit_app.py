@@ -35,7 +35,7 @@ if st.button('Predict Fare'):
     inf_df_api['totalDistance'] = [total_distance]
 
     predictions = {
-        # 'TensorFlow': model_tf_prediction(inf_df),
+        'TensorFlow': model_tf_prediction(inf_df),
         'Catboost': model_catboost_prediction(inf_df_api),
         #'Model 3': model_custom1_prediction(inf_df_api),
         #'Model 4': model_custom2_prediction(inf_df)
