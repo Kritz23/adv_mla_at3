@@ -17,6 +17,9 @@ departure_date = st.date_input('Departure Date')
 departure_time = st.time_input('Departure Time')
 cabin_type = st.selectbox('Cabin Type', ['coach', 'premium coach', 'first', 'business'])
 
+origin = origin.upper()
+destination = destination.upper()
+
 new_data = {
     'startingAirport': origin,
     'destinationAirport': destination,
@@ -46,4 +49,8 @@ if st.button('Predict Fare'):
 
     # Display predictions in a table
     predictions_df = pd.DataFrame(predictions.items(), columns=['Model', 'Predicted Fare'])
+    predictions_df['Predicted Fare'] = predictions_df['Predicted Fare'].apply(lambda x: f"${x}")
     st.write(predictions_df)
+
+    # Display the average of predicted fares
+    #st.write(f"Your average Predicted Fare is ${average_fare:.2f}")
