@@ -1,15 +1,14 @@
 import sys
 import pandas as pd
 import streamlit as st
-from catboost import CatBoostRegressor
 import joblib
-sys.path.append("../src/features")
+sys.path.append("./src/features")
 from build_features import get_date_features
 
 def model_catboost_prediction(inf_df):
     # Load the preprocessor and CatBoost model
-    preprocessor = joblib.load('../models/Sahil/preprocessor.joblib')
-    catboost_model = joblib.load('../models/Sahil/catboost_model.joblib')
+    preprocessor = joblib.load('./models/Sahil/preprocessor.joblib')
+    catboost_model = joblib.load('./models/Sahil/catboost_model.joblib')
 
     # if catboost_model:
     #     st.write('CatBoost prediction model has been loaded successfully!')
