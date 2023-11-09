@@ -7,6 +7,7 @@ from flight_data_fetcher import get_flight_details
 from model_tf import model_tf_prediction
 from model_catboost import model_catboost_prediction
 from model_gb import model_gb_prediction
+from model_xgb import model_xgb_prediction
 
 st.title('Flight Fare Estimation App')
 st.write('Enter your trip details below:')
@@ -35,15 +36,17 @@ if st.button('Predict Fare'):
     inf_df_api['travelDuration'] = [travel_duration]
     inf_df_api['totalDistance'] = [total_distance]
     inf_df_gb = inf_df_api.copy()
+    
 
     predictions = {
         'TensorFlow': model_tf_prediction(inf_df),
         'Catboost': model_catboost_prediction(inf_df_api),
         'GradientBoost': model_gb_prediction(inf_df_gb),
-        #'Model 4': model_custom2_prediction(inf_df)
+        'XGBoost': model_xgb_prediction(inf_df_gb)
     }
     st.write(f'Predicted fares for your {origin} to {destination} trip on {departure_date}:')
 
     # Display predictions in a table
     predictions_df = pd.DataFrame(predictions.items(), columns=['Model', 'Predicted Fare'])
+    predictions_df['Predicted Fare'] = predictions_df['Predicted Fare'].apply(lambda x: f"${x}")
     st.write(predictions_df)
