@@ -17,7 +17,7 @@ The application integrates four different predictive models, each developed by a
 |Gradient Boost|Varun Chhetri|24711703|
 |XGBoost|Anika Chauhan|14188775|
 
-Wandb project for Tensorflow Model - [link](https://wandb.ai/kritika_23/projects)
+Wandb project for Tensorflow Model - [project link](https://wandb.ai/kritika_23/projects) <br>
 Wandb tf experiment report  - [Adv Mla AT3 Results Analysis](https://api.wandb.ai/links/kritika_23/cjb35rqa) 
 
 ## Deploying to Streamlit
