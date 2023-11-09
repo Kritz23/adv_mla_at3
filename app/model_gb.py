@@ -3,12 +3,17 @@
 import pandas as pd
 from joblib import load
 import datetime
+import sys
+import streamlit as st
 sys.path.append("./src/features")
 
 
 def model_gb_prediction(inf_df):
+    ## Print the incoming dataframe
+    st.write('Incoming dataframe:')
+    st.write(inf_df)
     # Load the pre-trained Gradient Boosting model
-    gradient_boosting_model = load('./models/Varun/gradient_boosting_model.joblib')
+    gradient_boosting_model = load('../models/Varun/gradient_boosting_model.joblib')
 
     # Convert 'flightDate' and 'departure_time' from string to datetime objects
     inf_df['flightDate'] = pd.to_datetime(inf_df['flightDate'])
