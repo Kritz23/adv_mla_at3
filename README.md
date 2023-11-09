@@ -17,6 +17,18 @@ The application integrates four different predictive models, each developed by a
 |Gradient Boost|Varun Chhetri|24711703|
 |XGBoost|Anika Chauhan|14188775|
 
+Wandb project for Tensorflow Model - [link](https://wandb.ai/kritika_23/projects)
+Wandb tf experiment report  - [Adv Mla AT3 Results Analysis](https://api.wandb.ai/links/kritika_23/cjb35rqa) 
+
+## Deploying to Streamlit
+1. Test it out on local - In the project's parent directory run `streamlit run app/streamlit_app.py`
+2. Create a web app on streamlit - choose existing repository from github and give main file path `app/streamlit_app.py`
+
+## Limitations to the web app
+Airport codes of selective cities given in this list only are supported to get a predicted airfare: <br>
+[LAX, LGA, BOS, SFO, DFW, ORD, MIA, ATL, CLT, PHL, DEN, DTW, EWR, JFK, IAD, OAK] 
+
+The model is trained on the data provided from 2022-04-17 to 2022-07-17. So, if the input date is in this range, the results would be more accurate.
 
 
 ## Repository Structure
@@ -79,6 +91,6 @@ This project is licensed under the MIT License.
 ## Authors
 
 -   **Anika Chauhan** - [GitHub](https://github.com/anika)
--   **Kritika Dhawale** - [GitHub](https://github.com/Kritz23)
+-   **Kritika Dhawale** - kritika.dhawale@student.uts.edu.au - [GitHub](https://github.com/Kritz23)
 -   **Sahil Kotak** - sahil.kotak@student.uts.edu - [GitHub](https://github.com/sahilkotak)
 -   **Varun Chhetri** - [GitHub](https://github.com/varun)
