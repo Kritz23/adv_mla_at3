@@ -10,9 +10,6 @@ def model_catboost_prediction(inf_df):
     preprocessor = joblib.load('./models/Sahil/preprocessor.joblib')
     catboost_model = joblib.load('./models/Sahil/catboost_model.joblib')
 
-    # if catboost_model:
-    #     st.write('CatBoost prediction model has been loaded successfully!')
-
     # # Print the incoming dataframe
     # st.write('Incoming dataframe:')
     # st.write(inf_df)
