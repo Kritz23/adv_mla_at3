@@ -21,6 +21,10 @@ def model_catboost_prediction(inf_df):
     # Rename cabin_type feature to CabinClass
     inf_df.rename(columns={'cabin_type': 'CabinClass'}, inplace=True)
 
+    # # Print the incoming dataframe
+    # st.write('Incoming dataframe:')
+    # st.write(inf_df)
+
     # Run the df through get_date_features
     inf_df = get_date_features(inf_df)
 
