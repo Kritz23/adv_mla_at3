@@ -63,5 +63,5 @@ def model_gb_prediction(inf_df):
 
     # Perform prediction with the loaded Gradient Boosting model
     prediction = gradient_boosting_model.predict(model_input_df)
-    return prediction[0]
-
+    rounded_prediction = round(prediction[0], 2)
+    return rounded_prediction
