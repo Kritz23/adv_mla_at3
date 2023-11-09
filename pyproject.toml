@@ -15,6 +15,7 @@ gdown = "^4.7.1"
 isodate = "^0.6.1"
 shap = "^0.43.0"
 wandb = "^0.16.0"
+catboost = "^1.2.2"
 streamlit = "1.28.1"
 
 [build-system]
