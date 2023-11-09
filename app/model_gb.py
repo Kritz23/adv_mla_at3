@@ -11,7 +11,7 @@ sys.path.append("./src/features")
 def model_gb_prediction(inf_df):
     
     # Load the pre-trained Gradient Boosting model
-    gradient_boosting_model = load('../models/Varun/gradient_boosting_model.joblib')
+    gradient_boosting_model = load('./models/Varun/gradient_boosting_model.joblib')
 
     # Convert 'flightDate' and 'departure_time' from string to datetime objects
     inf_df['flightDate'] = pd.to_datetime(inf_df['flightDate'])
@@ -63,5 +63,5 @@ def model_gb_prediction(inf_df):
 
     # Perform prediction with the loaded Gradient Boosting model
     prediction = gradient_boosting_model.predict(model_input_df)
-    return prediction[0]
-
+    rounded_prediction = round(prediction[0], 2)
+    return rounded_prediction
