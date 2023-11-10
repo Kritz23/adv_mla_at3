@@ -8,7 +8,7 @@ from flight_data_fetcher import get_flight_details
 from model_tf import model_tf_prediction
 from model_catboost import model_catboost_prediction
 from model_gb import model_gb_prediction
-from model_xgb_1 import model_xgb_prediction
+from model_xgb import model_xgb_prediction
 
 st.title('Flight Fare Estimation App')
 st.write('Enter your trip details below:')
