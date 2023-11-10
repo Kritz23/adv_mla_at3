@@ -52,7 +52,6 @@ if st.button('Predict Fare'):
     # Display predictions in a table
     predictions_df = pd.DataFrame(predictions.items(), columns=['Model', 'Predicted Fare'])
     predictions_df['Predicted Fare'] = predictions_df['Predicted Fare'].apply(lambda x: f"${x}")
-    predictions_df['Predicted Fare'] = predictions_df['Predicted Fare'].apply(lambda x: f"${x}")
     st.write(predictions_df)
 
     # Display the average of predicted fares
