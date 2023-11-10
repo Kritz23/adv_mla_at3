@@ -20,9 +20,9 @@ def model_xgb_prediction(inf_df):
     
     # Load the pre-trained Gradient Boosting model
     xgb_model = load('./models/ANIKA/best_xgb_model_reg.joblib')
-    if xgb_model:
+    """if xgb_model:
         st.write('XGBoost prediction model has been loaded successfully!')
-        
+    """
     # Check if 'departure_time_category' is present in the DataFrame
     if 'departure_time_category' in inf_df.columns:
         # Load label encoders and scaler

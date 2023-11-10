@@ -13,8 +13,6 @@ def model_tf_prediction(inf_df):
 
     # Load the trained model
     model = load_model("./models/Kritika/exp2_best_model.h5")
-    if model:
-        st.write('Tensorflow prediction model has been loaded successfully!')
 
     # Load label encoders and scaler
     label_encoder = joblib.load('./models/Kritika/label_encoder.joblib')
