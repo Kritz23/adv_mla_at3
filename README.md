@@ -90,7 +90,7 @@ This project is licensed under the MIT License.
 
 ## Authors
 
--   **Anika Chauhan** - [GitHub](https://github.com/anikachauhan30)
+-   **Anika Chauhan** - anika.chauhan@student.uts.edu.au - [GitHub](https://github.com/anikachauhan30)
 -   **Kritika Dhawale** - kritika.dhawale@student.uts.edu.au - [GitHub](https://github.com/Kritz23)
 -   **Sahil Kotak** - sahil.kotak@student.uts.edu - [GitHub](https://github.com/sahilkotak)
 -   **Varun Chhetri** - [GitHub](https://github.com/varun)
