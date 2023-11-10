@@ -40,11 +40,13 @@ The model is trained on the data provided from 2022-04-17 to 2022-07-17. So, if 
 ## Getting Started
 
 ### Prerequisites
-- scikit-learn==1.2.1
+- scikit-learn==1.3.1
 - pandas==2.1.1
 - numpy>=1.23.4
 - joblib==1.2.0
 - tensorflow==2.14.0
+- catboost==1.2.2
+- xgboost==2.0.1
 - streamlit==1.14.0
 
 ### Installation
