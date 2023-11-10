@@ -5,6 +5,7 @@
 
 
 import pandas as pd
+import joblib
 from joblib import load
 import datetime
 import sys
@@ -13,60 +14,32 @@ sys.path.append("./src/features")
 
 
 def model_xgb_prediction(inf_df):
+    from build_features import get_date_features, get_time_features
+    inf_df = get_date_features(inf_df)
+    inf_df = get_time_features(inf_df)
     
     # Load the pre-trained Gradient Boosting model
     xgb_model = load('./models/ANIKA/best_xgb_model_reg.joblib')
+    if xgb_model:
+        st.write('XGBoost prediction model has been loaded successfully!')
+        
+    # Check if 'departure_time_category' is present in the DataFrame
+    if 'departure_time_category' in inf_df.columns:
+        # Load label encoders and scaler
+        label_encoder = joblib.load('./models/ANIKA/label_encoder.joblib')
+        scaler = joblib.load('./models/ANIKA/standard_scaler.joblib')
+        
+        # Apply label encoding on categorical columns in the new data
+        for col in ['startingAirport', 'destinationAirport', 'cabin_type', 'departure_time_category']:
+            inf_df[col] = label_encoder[col].transform(inf_df[col])
 
-    # Convert 'flightDate' and 'departure_time' from string to datetime objects
-    inf_df['flightDate'] = pd.to_datetime(inf_df['flightDate'])
-    inf_df['departure_time'] = pd.to_datetime(inf_df['departure_time']).dt.time
+        # Scale the new data using the scaler fitted on the training data
+        df_scaled = scaler.transform(inf_df)
 
-    # Extract date and time features
-    inf_df['flight_month'] = inf_df['flightDate'].dt.month
-    inf_df['flight_day'] = inf_df['flightDate'].dt.day
-    inf_df['flight_day_of_week'] = inf_df['flightDate'].dt.weekday
-    inf_df['flight_week_of_year'] = inf_df['flightDate'].dt.isocalendar().week
-    inf_df['flight_is_weekend'] = inf_df['flight_day_of_week'] >= 5
-    if not pd.api.types.is_datetime64_any_dtype(inf_df['departure_time']):
-        inf_df['departure_time'] = pd.to_datetime(inf_df['departure_time'], format='%H:%M:%S').dt.time
-    inf_df['departure_hour'] = inf_df['departure_time'].apply(lambda x: x.hour if pd.notnull(x) else '')
-
-    # Define departure time of day based on the hour
-    def get_departure_time_of_day(hour):
-        if 5 <= hour < 12:
-            return 'morning'
-        elif 12 <= hour < 17:
-            return 'afternoon'
-        elif 17 <= hour < 21:
-            return 'evening'
-        else:
-            return 'night'
-
-    inf_df['departure_time_of_day'] = inf_df['departure_hour'].apply(get_departure_time_of_day)
-
-    # Select and rename columns as per the model's expected input
-    model_input_df = inf_df[[
-        'startingAirport', 'destinationAirport', 'flight_month', 'flight_day',
-        'flight_day_of_week', 'flight_week_of_year', 'flight_is_weekend',
-        'cabin_type', 'departure_time_of_day', 'travelDuration', 'totalDistance'
-    ]].rename(columns={
-        'startingAirport': 'startingAirport',
-        'destinationAirport': 'destinationAirport',
-        'flight_month': 'flightMonth',
-        'flight_day': 'flightDay',
-        'flight_day_of_week': 'flightDayOfWeek',
-        'flight_week_of_year': 'flightWeekOfYear',
-        'flight_is_weekend': 'flightIsWeekend',
-        'cabin_type': 'cabin_type',
-        'departure_time_of_day': 'departure_time',
-        'travelDuration': 'traveltime_hours',
-        'totalDistance': 'totalTravelDistance'
-
-    })
-
-
-    # Perform prediction with the loaded Gradient Boosting model
-    prediction = xgb_model.predict(model_input_df)
-    rounded_prediction = round(prediction[0], 2)
-    return rounded_prediction
-
+        # Make prediction using the loaded model
+        prediction = xgb_model.predict(df_scaled)
+        pred_fare = '{:.2f}'.format(prediction[0])
+        return pred_fare
+    else:
+        st.write("'departure_time_category' column not found in the input DataFrame.")
+        return None

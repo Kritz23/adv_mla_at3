@@ -1,4 +1,5 @@
 import streamlit as st
+import joblib
 import pandas as pd
 import os
 # Loading additional flight data from external API
@@ -7,7 +8,7 @@ from flight_data_fetcher import get_flight_details
 from model_tf import model_tf_prediction
 from model_catboost import model_catboost_prediction
 from model_gb import model_gb_prediction
-from model_xgb import model_xgb_prediction
+from model_xgb_1 import model_xgb_prediction
 
 st.title('Flight Fare Estimation App')
 st.write('Enter your trip details below:')
@@ -45,7 +46,7 @@ if st.button('Predict Fare'):
         'TensorFlow': model_tf_prediction(inf_df),
         'Catboost': model_catboost_prediction(inf_df_api),
         'GradientBoost': model_gb_prediction(inf_df_gb),
-        'XGBoost': model_xgb_prediction(inf_df_gb)
+        'XGBoost': model_xgb_prediction(inf_df)
     }
     st.write(f'Predicted fares for your {origin} to {destination} trip on {departure_date}:')
 
